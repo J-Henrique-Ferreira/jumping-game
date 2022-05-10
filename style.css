@@ -1,0 +1,81 @@
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+
+body {
+/* background-image: linear-gradient(to top,[]); */
+background-color: FFFF;
+font-family: 'New Rocker';
+color: white;
+}
+
+h1 {
+    color: rgb(219, 184, 10);
+    text-shadow: 1px 1px 1px rgb(225, 6, 6);
+    text-align: center;
+    margin-top: 10px;
+}
+
+p {
+    color: rgb(229, 177, 20);
+    text-shadow: 1px 1px 1px rgb(0, 0, 0);
+}
+
+canvas {
+    display: block;
+    margin: auto;
+}
+
+.div-stage {
+    position: relative;
+    margin: auto;
+    width: 524px;
+    margin-top: 5px;
+    border: 3px  white solid;
+
+}
+
+.div-pontos {
+    margin-right: 5px;
+    position: absolute;
+    right: 0;
+}
+
+.div-record {
+    margin-left: 5px;
+    position: absolute;
+    left: 0;
+}
+
+
+
+
+/*
+canvas {
+    display: block;
+    margin: auto;
+}
+
+.div-stage {
+    position: relative;
+    margin: auto;
+    width: 524px;
+    margin-top: 5px;
+    border: 3px  white solid;
+
+}
+
+.div-pontos {
+    position: absolute;
+    right: 0;
+}
+
+.div-record {
+    position: absolute;
+    left: 0;
+}
+ */
+ 

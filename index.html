@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=New+Rocker&display=swap" rel="stylesheet">
+
+    <title>Document</title>
+</head>
+<body>
+    
+    <main>
+        <h1>JUMPING - GAME</h1>
+        <div class="div-stage">
+            <div class="div-record"><p>RECORD/ <span id="setRecord"></span></p></span></div>
+            <div class="div-pontos"><p>PONTOS/ <span id="outPontos"></span></p></div>
+            <canvas id="stage" width="524" height="174"></canvas>
+        </div>
+    </main>
+
+
+    <audio class="theme" src="./audio/thema.mp3" id="themeMusic" autoplay loop></audio>
+
+    <audio src="./audio/keyUp.mp3" id="keyUp"></audio>
+    <audio src="./audio/gameOver3.mp3" id="gameOver"></audio>
+    <audio src="./audio/brilho.mp3" id="brilho"></audio>
+
+
+<script src="code.js"></script>
+</body>
+</html>
