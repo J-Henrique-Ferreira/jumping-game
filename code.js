@@ -45,6 +45,7 @@ window.onload = function() {
     setInterval(game, 50);
     setInterval(criarFundo, 300);
     setInterval(pontuacao, 120);
+    setInterval(bip, 200)
 
     // variáveis de posição do personagem
     var xIniPersonagem = 0; // ponto de inicio detro da imagem original
@@ -317,7 +318,6 @@ window.onload = function() {
     function pontuacao () {
         
         if (vel >= 1) {
-            bip();
             pontos++;
         }
 
@@ -424,8 +424,10 @@ window.onload = function() {
 
 
     function bip () {
-        let audio = document.getElementById("bip");
-        audio.currentTime = 0.18
-        audio.play()
+        if (vel >= 1) {
+            let audio = document.getElementById("bip");
+            audio.currentTime = 0.18;
+            audio.play()  
+        }
     }
 }
