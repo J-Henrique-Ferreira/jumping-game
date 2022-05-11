@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ptbr">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="./img/joystick.png" type="image/x-icon">
 
     <link rel="stylesheet" href="style.css">
 
@@ -11,10 +12,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=New+Rocker&display=swap" rel="stylesheet">
 
-    <title>Document</title>
+    <title>Jumping-Game</title>
 </head>
-<body>
-    
+<body> 
     <main>
         <h1>JUMPING - GAME</h1>
         <div class="div-stage">
@@ -22,6 +22,11 @@
             <div class="div-pontos"><p>PONTOS/ <span id="outPontos"></span></p></div>
             <canvas id="stage" width="524" height="174"></canvas>
         </div>
+
+        <footer class="div-footer">
+            <p>Desenvolvido por <a href="https://github.com/J-Henrique-Ferreira" target="_blank">João Henrique Ferreira</a></p>
+        </footer>
+
     </main>
 
 
@@ -30,6 +35,8 @@
     <audio src="./audio/keyUp.mp3" id="keyUp"></audio>
     <audio src="./audio/gameOver3.mp3" id="gameOver"></audio>
     <audio src="./audio/brilho.mp3" id="brilho"></audio>
+    <audio src="./audio/bip.mp3" id="bip"></audio>
+
 
 
 <script src="code.js"></script>

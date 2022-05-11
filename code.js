@@ -1,3 +1,11 @@
+//                        __   __
+//                       |(ª) (*)|
+//                       |   #   | 
+//                       | '¨¨¨' |
+//                        ¨¨¨¨¨¨¨                           
+/*---------- Coded by @joaof6418 instagram ----------*/
+
+
 window.onload = function() {
     let stage = document.getElementById("stage");
     let ctx = stage.getContext("2d");
@@ -17,9 +25,11 @@ window.onload = function() {
 
     // variaveis auxiliares
     var vel = 1;
+    var velPer = 1;
     var largura = stage.width;
     var altura = stage.height;
     var pontos = 0;
+    var ctrlColisao = 0;
 
 
     //variavel que contem as imagens
@@ -37,7 +47,7 @@ window.onload = function() {
 
 
 
-    setInterval(game, 100);
+    setInterval(game, 50);
     setInterval(exibirJogo, 10);
     setInterval(exibirCactos, 10);
     setInterval(criarFundo, 100);
@@ -82,11 +92,10 @@ window.onload = function() {
     var aCact = 80;
 
 
-    var pCactoX1 = stage.width + 50
-    var pCactoX2 = stage.width + 250;
-    var pCactoX3 = stage.width + 450;
-
-    var pCactoX4 = stage.width + 600;
+    var pCactoX1 = stage.width + 40 + (( vel * 15) * 2);
+    var pCactoX2 = stage.width + 240 + (( vel * 15) * 2);
+    var pCactoX3 = stage.width + 450 + (( vel * 15) * 2);
+    var pCactoX4 = stage.width + 560 + (( vel * 15) * 2);
 
 
 
@@ -162,7 +171,7 @@ window.onload = function() {
         ctx.fillStyle = "rgb(105, 67, 32)";
         ctx.fillRect(0, altura - 3, largura, largura);
 
-
+        //gameOver
         if (vel == 0) {
             ctx.drawImage(gameOver, 162, 30);
         }
@@ -171,7 +180,7 @@ window.onload = function() {
 
     function criarFundo () {
         pFundo1X += vFundoX;
-        xIniFundo2 += vel;
+        xIniFundo2 += vel * 2;
         
         //se o inicio do fundo 2 no x for menor que a posição 0
         //redefine os valores iniciais e cria-se um novo movimento 
@@ -180,7 +189,7 @@ window.onload = function() {
             xIniFundo2 = -524;
         }
         //diminoui para mover pra esquerda
-        vFundoX = -vel;
+        vFundoX = -vel * 2;
     }
 
     function game() {
@@ -189,7 +198,7 @@ window.onload = function() {
             pPersonagemY += vPersonagemY;
 
             //controla a animação de movimento no eixo x do personagem se a valocidade for igual a 1
-            if (vel >= 1) {
+            if (vel >= 1 && pPersonagemY >= 111) {
                 if (xIniPersonagem == lPersonagem  * 7) {
                     xIniPersonagem = 0;
                 } else {
@@ -198,9 +207,9 @@ window.onload = function() {
             }
           
             //controla a moiventaçao do personagem no eixo y
-            if (pPersonagemY <= 75) {
+            if (pPersonagemY <= 60) {
                 
-                vPersonagemY = 5 + vel;
+                vPersonagemY = 6;
                 
             } else if (pPersonagemY >= 111) {
                 vPersonagemY = 0;
@@ -213,19 +222,19 @@ window.onload = function() {
     }
 
     function verificarPos() {
-        if (pPersonagemY + aImgcacto + 10 >= pCactoY1 && pCactoX1 
-            + 15 <= pPersonagemX +lImgPersonagem && pCactoX1 > 30) {
+        if (pPersonagemY + aImgcacto + 20 >= pCactoY1 && pCactoX1 
+            + 15 <= pPersonagemX +lImgPersonagem && pCactoX1 > 45) {
             vel = 0;
            // colisao();
         }
 
-        if (pPersonagemY + aImgcacto + 10 >= pCactoY1 && pCactoX2 
+        if (pPersonagemY + aImgcacto + 20 >= pCactoY1 && pCactoX2 
             + 15 <= pPersonagemX +lImgPersonagem && pCactoX2 > 30) {
             vel = 0;
             //colisao();
         } 
 
-        if (pPersonagemY + aImgcacto + 10 >= pCactoY1 && pCactoX3
+        if (pPersonagemY + aImgcacto + 20 >= pCactoY1 && pCactoX3
              + 15 <= pPersonagemX +lImgPersonagem && pCactoX3 > 30) {
             vel = 0;
             //colisao();
@@ -264,7 +273,7 @@ window.onload = function() {
 
         }
 
-        vCactoX = -vel;
+        vCactoX = -vel * 1.3;
     }
 
 
@@ -295,6 +304,7 @@ window.onload = function() {
     function pontuacao () {
         
         if (vel >= 1) {
+            bip();
             pontos++;
         }
 
@@ -331,10 +341,18 @@ window.onload = function() {
             
             if (pPersonagemY == 111) {
             up();
-            vPersonagemY += -5 - vel;
+            vPersonagemY += -6;
            }
             if (vel == 0) {
-                location.reload();
+                vel = 1;
+                vPersonagemY = 0;
+                pCactoX1 = stage.width + 40 + (( vel * 15) * 2);
+                pCactoX2 = stage.width + 240 + (( vel * 15) * 2);
+                pCactoX3 = stage.width + 450 + (( vel * 15) * 2);
+                pCactoX4 = stage.width + 560 + (( vel * 15) * 2);
+                ctrlColisao = 0
+                pontos = 0
+
             }
             break;
 
@@ -358,7 +376,8 @@ window.onload = function() {
 
     // efeitos sonoros
     
-    // if (vel != 0) {
+
+    //  if (vel >= 1) {
     //     var theme = document.getElementById("themeMusic");
     //     theme.play();
     // }
@@ -370,15 +389,21 @@ window.onload = function() {
     }
 
     function colisao() {
-        if (vel == 0) {
+        if (ctrlColisao == 0) {
             let audio = document.getElementById("gameOver");
             audio.play();  
-            // location.reload();
+            ctrlColisao = 1;
         }
     }
 
     function brilho () {
         let audio = document.getElementById("brilho");
-            audio.play();
+        audio.play();
+    }
+
+
+    function bip () {
+        let audio = document.getElementById("bip");
+        audio.play()
     }
 }

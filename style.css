@@ -4,29 +4,41 @@
     padding: 0;
 }
 
+:root {
+    --cor0: #0012CE;
+    --cor1: #8CC2F9;
+    --cor2: #d9dd02;
+    --cor3: #b40603;
+    --cor4: #5F770E;
+    --cor5:#850200;
+}
+
 
 body {
 /* background-image: linear-gradient(to top,[]); */
-background-color: FFFF;
+background-color: rgb(67, 106, 79);
 font-family: 'New Rocker';
-color: white;
 }
 
 h1 {
-    color: rgb(219, 184, 10);
-    text-shadow: 1px 1px 1px rgb(225, 6, 6);
+    color: var(--cor2);
+    text-shadow: 1px 1px 1px var(--cor3);
     text-align: center;
-    margin-top: 10px;
+    margin: 10px auto 10px auto;
 }
 
 p {
-    color: rgb(229, 177, 20);
-    text-shadow: 1px 1px 1px rgb(0, 0, 0);
+    /* */
+    color:  var(--cor2);
+    text-shadow: 1px 1px 1px rgb(82, 53, 6);
 }
 
 canvas {
     display: block;
     margin: auto;
+    border: 3px #ffffff solid;
+    border-radius: 5px;
+
 }
 
 .div-stage {
@@ -34,7 +46,6 @@ canvas {
     margin: auto;
     width: 524px;
     margin-top: 5px;
-    border: 3px  white solid;
 
 }
 
@@ -50,32 +61,33 @@ canvas {
     left: 0;
 }
 
-
-
-
-/*
-canvas {
-    display: block;
-    margin: auto;
+.div-footer {
+   
 }
-
-.div-stage {
-    position: relative;
-    margin: auto;
-    width: 524px;
-    margin-top: 5px;
-    border: 3px  white solid;
-
-}
-
-.div-pontos {
+.div-footer p {
+    font-size: 1.4em;
+    width: 100%;
     position: absolute;
-    right: 0;
+    bottom: 0;
+    text-align: center;
+    padding-bottom: 20px; 
+    color: var(--cor0);
+    text-shadow: 1px 1px 1px var(--cor);
+ 
 }
 
-.div-record {
-    position: absolute;
-    left: 0;
+
+
+.div-footer a {
+    /* text-decoration:underline blue; */
+    text-decoration: none;
+    color:  var(--cor0);
+
 }
- */
+
+
+.div-footer a:hover {
+    color: var(--cor5);
+    transition: .2s;
+}
  
