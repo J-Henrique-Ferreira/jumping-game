@@ -41,9 +41,9 @@ window.onload = function() {
 
     
     setInterval(exibirJogo, 50);
-    setInterval(valorCactos, 10);
+    setInterval(valorCactos, 0);
     setInterval(game, 50);
-    setInterval(criarFundo, 300);
+    setInterval(criarFundo, 250);
     setInterval(pontuacao, 120);
     setInterval(bip, 250)
     setInterval(themeMusic, 1000)
@@ -68,7 +68,7 @@ window.onload = function() {
 
     // variaveis para gerar cacto
     var xIniCacto1 = 0; //ponto x de inicio do cacto dentro da imagem original
-    var xIniCacto2 = 50;
+    var xIniCacto2 = 100;
     var xIniCacto3 = 150;
     var xIniCacto4 = 250;
 
@@ -85,11 +85,11 @@ window.onload = function() {
 
     var aCact = 80; //altura do corte na imagem original
 
-    //posiçao de cada cacto no mapa, varia de acordo com a velocidade
-    var pCactoX1 = stage.width + 50 + ((vel * 2 * 15) * 2);
-    var pCactoX2 = stage.width + 260 + ((vel * 2 * 15) * 2);
-    var pCactoX3 = stage.width + 550 + ((vel * 1.5 * 15) * 2);
-    var pCactoX4 = stage.width + 830 + ((vel * 3 * 15) * 2);
+    //posiçao de cada cacto no mapa
+    var pCactoX1 = stage.width + 40;
+    var pCactoX2 = stage.width + 240;
+    var pCactoX3 = stage.width + 480;
+    var pCactoX4 = stage.width + 560;
 
 
 
@@ -254,6 +254,12 @@ window.onload = function() {
             //colisao();
          }
 
+         if (pPersonagemY + (aImgPersonagem -10) >= pCactoY1 && pCactoX4
+            + 15 <= pPersonagemX +lImgPersonagem && pCactoX4 > 35) {
+            vel = 0;
+            //colisao();
+         }
+
     }
 
 
@@ -287,7 +293,7 @@ window.onload = function() {
 
         }
 
-        vCactoX = -vel * 1.1;
+        vCactoX = -vel * 0.5;
     }
 
 
@@ -383,10 +389,10 @@ window.onload = function() {
         if (vel == 0) {
             vel = 1;
             vPersonagemY = 0;
-            pCactoX1 = stage.width + 40 + (( vel * 15) * 2);
-            pCactoX2 = stage.width + 240 + (( vel * 15) * 2);
-            pCactoX3 = stage.width + 450 + (( vel * 15) * 2);
-            pCactoX4 = stage.width + 560 + (( vel * 15) * 2);
+            pCactoX1 = stage.width + 40;
+            pCactoX2 = stage.width + 240;
+            pCactoX3 = stage.width + 450;
+            pCactoX4 = stage.width + 560;
             ctrlColisao = 0
             pontos = 0
         }
