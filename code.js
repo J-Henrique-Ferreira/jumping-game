@@ -396,7 +396,6 @@ window.onload = function() {
 
     // efeitos sonoros
     
-    themeMusic();
     function themeMusic() {
         var theme = document.getElementById("themeMusic");
         theme.play();
