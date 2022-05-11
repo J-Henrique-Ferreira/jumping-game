@@ -90,4 +90,27 @@ canvas {
     color: var(--cor5);
     transition: .2s;
 }
+
+
+@media (max-width: 500px) {
+    h1 {
+     display: none;
+    }
+
+    canvas {
+        margin-top: 100px;
+    }
+
+    div-stage {
+        position: relative;
+        margin: auto;
+        width: 356px;
+        margin-top: 150px;
+    }
+
+    .div-footer p {
+        /* width: 200%; */
+        display: none;
+    }
+}
  
