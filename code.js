@@ -377,10 +377,10 @@ window.onload = function() {
     // efeitos sonoros
     
 
-    //  if (vel >= 1) {
-    //     var theme = document.getElementById("themeMusic");
-    //     theme.play();
-    // }
+     if (vel >= 1) {
+        var theme = document.getElementById("themeMusic");
+        theme.play();
+    }
 
     function up() {
         let audiokey = document.getElementById("keyUp");
