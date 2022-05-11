@@ -45,8 +45,8 @@ window.onload = function() {
     setInterval(game, 50);
     setInterval(criarFundo, 300);
     setInterval(pontuacao, 120);
-    setInterval(bip, 200)
-
+    setInterval(bip, 250)
+    setInterval(themeMusic, 1000)
     // variáveis de posição do personagem
     var xIniPersonagem = 0; // ponto de inicio detro da imagem original
     var yIniPersonagem = 0;
@@ -404,7 +404,7 @@ window.onload = function() {
 
     function upSound() {
         let audio = document.getElementById("keyUp");
-        audio.currentTime = 0.62;
+        audio.currentTime = 0.72;
         audio.play();
     }
 
@@ -426,7 +426,7 @@ window.onload = function() {
     function bip () {
         if (vel >= 1) {
             let audio = document.getElementById("bip");
-            audio.currentTime = 0.18;
+            audio.currentTime = 0.17;
             audio.play()  
         }
     }
