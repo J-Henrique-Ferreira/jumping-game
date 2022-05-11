@@ -5,32 +5,24 @@
 //                        ¨¨¨¨¨¨¨                           
 /*---------- Coded by @joaof6418 instagram ----------*/
 
-
 window.onload = function() {
     let stage = document.getElementById("stage");
     let ctx = stage.getContext("2d");
 
-    document.addEventListener("keydown", upp);
-    document.addEventListener("click", uppMobile);
+    document.addEventListener("keydown", up);
+    document.addEventListener("click", upMobile);
 
     let outPontos = document.getElementById("outPontos");
     let setRecord = document.getElementById("setRecord");
 
 
-    
-
-
-
-
 
     // variaveis auxiliares
     var vel = 1;
-    var velPer = 1;
     var largura = stage.width;
     var altura = stage.height;
     var pontos = 0;
     var ctrlColisao = 0;
-
 
     //variavel que contem as imagens
     let personagem = new Image();
@@ -47,24 +39,25 @@ window.onload = function() {
 
 
 
+    
+    setInterval(exibirJogo, 50);
+    setInterval(valorCactos, 10);
     setInterval(game, 50);
-    setInterval(exibirJogo, 10);
-    setInterval(exibirCactos, 10);
-    setInterval(criarFundo, 100);
-    setInterval(pontuacao, 160);
+    setInterval(criarFundo, 300);
+    setInterval(pontuacao, 120);
 
     // variáveis de posição do personagem
-    var xIniPersonagem = 0;
+    var xIniPersonagem = 0; // ponto de inicio detro da imagem original
     var yIniPersonagem = 0;
 
-    var lPersonagem = 108;
-    var aPersonagem = 130;
+    var lPersonagem = 108; //largura docorte na imagem original
+    var aPersonagem = 130; // altura .......
 
-    var pPersonagemX = 45;
-    var pPersonagemY = 111;
+    var pPersonagemX = 45;  // ponto x que que personagem mé exibido no stage
+    var pPersonagemY = 111; // ponto y que pue persogem é exibido no stage
 
-    var lImgPersonagem = 40;
-    var aImgPersonagem = 60;
+    var lImgPersonagem = 40; // largura de exibicao da imagem
+    var aImgPersonagem = 60; // altura
 
     var vPersonagemY = 0; // velocidade no eixo y
 
@@ -73,39 +66,39 @@ window.onload = function() {
 
 
     // variaveis para gerar cacto
-    var xIniCacto1 = 0;
+    var xIniCacto1 = 0; //ponto x de inicio do cacto dentro da imagem original
     var xIniCacto2 = 50;
     var xIniCacto3 = 150;
     var xIniCacto4 = 250;
 
-    var yIniCacto1 = 0;
+    var yIniCacto1 = 0; //ponto x de inicio do cacto dentro da imagem original
     var yIniCacto2 = 0;
     var yIniCacto3 = 0;
     var yIniCacto4 = 0;
 
-    var lCacto1 = 50;
+    var lCacto1 = 50; //largura do corte na imagem original
     var lCacto2 = 50;
     var lCacto3 = 50;
     var lCacto4 = 50;
 
 
-    var aCact = 80;
+    var aCact = 80; //altura do corte na imagem original
+
+    //posiçao de cada cacto no mapa, varia de acordo com a velocidade
+    var pCactoX1 = stage.width + 50 + ((vel * 2 * 15) * 2);
+    var pCactoX2 = stage.width + 260 + ((vel * 2 * 15) * 2);
+    var pCactoX3 = stage.width + 550 + ((vel * 1.5 * 15) * 2);
+    var pCactoX4 = stage.width + 830 + ((vel * 3 * 15) * 2);
 
 
-    var pCactoX1 = stage.width + 40 + (( vel * 15) * 2);
-    var pCactoX2 = stage.width + 240 + (( vel * 15) * 2);
-    var pCactoX3 = stage.width + 450 + (( vel * 15) * 2);
-    var pCactoX4 = stage.width + 560 + (( vel * 15) * 2);
 
-
-
-    var pCactoY1 = 141;
+    var pCactoY1 = 141; // ponto y em que o cacto é exibido
 
 
    
-    var lImgCacto = 20;
+    var lImgCacto = 20; // largura do cacto
 
-    var aImgcacto = 30;
+    var aImgcacto = 30; // altura do cacto
 
     var vCactoX = 0; // velocidade no eixo x
 
@@ -118,8 +111,8 @@ window.onload = function() {
     var yIniFundo1 = 0;
     var yIniFundo2 = 0;
 
-    var lFundo = 524; //largura
-    var aFundo = 175; //altura
+    var lFundo = 524; //largura do corte
+    var aFundo = 175; //altura do corte
 
     var pFundo1X = 0; // ponto x do fundo 1
     var pFundo2X = 0; // ponto y do fundo 2
@@ -141,6 +134,7 @@ window.onload = function() {
     function exibirJogo () {
         verificarPos();
        
+        // "apaga" o stage
         ctx.clearRect(0, 0, stage.width, stage.width);
 
 
@@ -149,15 +143,23 @@ window.onload = function() {
         
         //(imagem, xInicioRecorte, yInicioRecorte, larguraRecorte, alturaRecorte, posicaoX, posicaoY, larguraImagem, alturaimagem)
 
-        // fundo
+
+
+        // exibe o fundo
         ctx.drawImage(fundo, xIniFundo1, yIniFundo1, lFundo, aFundo, pFundo1X, pFundoY, lImgFundo, aImgFundo);
 
         ctx.drawImage(fundo, xIniFundo2, yIniFundo2, lFundo, aFundo, pFundo2X, pFundoY, lImgFundo, aImgFundo);
 
-        //personagem
+
+
+
+        //exibe o personagem
         ctx.drawImage(personagem, xIniPersonagem, yIniPersonagem, lPersonagem, aPersonagem, pPersonagemX, pPersonagemY, lImgPersonagem, aImgPersonagem);
 
-        // cactos
+
+
+
+        //exibe cactos os cactos
         ctx.drawImage(cactos, xIniCacto1, yIniCacto1, lCacto1, aCact, pCactoX1, pCactoY1, lImgCacto, aImgcacto);
 
         ctx.drawImage(cactos, xIniCacto2, yIniCacto2, lCacto2, aCact, pCactoX2, pCactoY1, lImgCacto, aImgcacto);
@@ -167,14 +169,25 @@ window.onload = function() {
         ctx.drawImage(cactos, xIniCacto4, yIniCacto4, lCacto4, aCact, pCactoX4, pCactoY1, lImgCacto, aImgcacto);
 
 
-        //solo 
-        ctx.fillStyle = "rgb(105, 67, 32)";
-        ctx.fillRect(0, altura - 3, largura, largura);
 
+
+
+
+        //cria um solo (uma linha de 3 px )
+        // ctx.fillRect(x, y, largura, altura);
+        ctx.fillStyle = "#a07f3d";
+        ctx.fillRect(0, altura - 3, largura, 3);
+
+
+
+
+        
         //gameOver
+        // ctx.drawImage(imagem, x, y)
         if (vel == 0) {
             ctx.drawImage(gameOver, 162, 30);
-        }
+            colisao();
+        } 
     }
 
 
@@ -183,12 +196,12 @@ window.onload = function() {
         xIniFundo2 += vel * 2;
         
         //se o inicio do fundo 2 no x for menor que a posição 0
-        //redefine os valores iniciais e cria-se um novo movimento 
+        //redefinen-se os valores iniciais e cria-se um novo movimento 
         if (xIniFundo2 >= 0) {
             pFundo1X = 0;
             xIniFundo2 = -524;
         }
-        //diminoui para mover pra esquerda
+        //diminou para mover pra esquerda
         vFundoX = -vel * 2;
     }
 
@@ -207,35 +220,35 @@ window.onload = function() {
             }
           
             //controla a moiventaçao do personagem no eixo y
-            if (pPersonagemY <= 60) {
+            if (pPersonagemY <= 60 ) {
                 
-                vPersonagemY = 6;
+                vPersonagemY = 7;
                 
             } else if (pPersonagemY >= 111) {
                 vPersonagemY = 0;
             }
         }   
-        if (vel == 0) {
-            colisao();
-        } 
-        
     }
 
     function verificarPos() {
-        if (pPersonagemY + aImgcacto + 20 >= pCactoY1 && pCactoX1 
-            + 15 <= pPersonagemX +lImgPersonagem && pCactoX1 > 45) {
+        // se posicao y do personagem(111) + (altura da imagem do personagem(40) - 10) >= posicao y do cacto && posicao x cacto  + (valor que põe as duas imagens em contato) <= posicao x do persoanagem + largura do personagem && ponto x do personagem > 30
+
+
+        if (pPersonagemY + (aImgPersonagem -10) >= pCactoY1 && pCactoX1 
+            + 15 <= pPersonagemX +lImgPersonagem && pCactoX1 > 35) {
             vel = 0;
            // colisao();
         }
 
-        if (pPersonagemY + aImgcacto + 20 >= pCactoY1 && pCactoX2 
-            + 15 <= pPersonagemX +lImgPersonagem && pCactoX2 > 30) {
+        if (pPersonagemY + (aImgPersonagem -10)>= pCactoY1 && pCactoX2 
+            + 15 <= pPersonagemX +lImgPersonagem && pCactoX2 > 35) {
             vel = 0;
+            console.log("pegou")
             //colisao();
         } 
 
-        if (pPersonagemY + aImgcacto + 20 >= pCactoY1 && pCactoX3
-             + 15 <= pPersonagemX +lImgPersonagem && pCactoX3 > 30) {
+        if (pPersonagemY + (aImgPersonagem -10) >= pCactoY1 && pCactoX3
+            + 15 <= pPersonagemX +lImgPersonagem && pCactoX3 > 35) {
             vel = 0;
             //colisao();
          }
@@ -243,7 +256,7 @@ window.onload = function() {
     }
 
 
-    function exibirCactos () {
+    function valorCactos () {
         pCactoX1 += vCactoX;
         pCactoX2 += vCactoX;
         pCactoX3 += vCactoX;
@@ -273,7 +286,7 @@ window.onload = function() {
 
         }
 
-        vCactoX = -vel * 1.3;
+        vCactoX = -vel * 1.1;
     }
 
 
@@ -309,7 +322,7 @@ window.onload = function() {
         }
 
         if (pontos%100 == 0) {
-            vel+= .1;
+            vel+= .05;
             brilho();
         }
 
@@ -333,15 +346,15 @@ window.onload = function() {
 
 
 
-
-    function upp(event) {
-       
+    //quando o evento keyDonw o ocorrer
+    function up(event) {
+       //caso keyDown foi a tecla up
         switch (event.keyCode) {
             case 38:
             
             if (pPersonagemY == 111) {
-            up();
-            vPersonagemY += -6;
+            upSound();
+            vPersonagemY += -7;
            }
             if (vel == 0) {
                 vel = 1;
@@ -362,13 +375,20 @@ window.onload = function() {
     }
 
 
-    function uppMobile () {
+    function upMobile () {
         if (pPersonagemY == 111) {
-            up();
-            vPersonagemY += -5 - vel;
+            upSound();
+            vPersonagemY += -7;
         }
         if (vel == 0) {
-            location.reload();
+            vel = 1;
+            vPersonagemY = 0;
+            pCactoX1 = stage.width + 40 + (( vel * 15) * 2);
+            pCactoX2 = stage.width + 240 + (( vel * 15) * 2);
+            pCactoX3 = stage.width + 450 + (( vel * 15) * 2);
+            pCactoX4 = stage.width + 560 + (( vel * 15) * 2);
+            ctrlColisao = 0
+            pontos = 0
         }
     }
 
@@ -376,21 +396,22 @@ window.onload = function() {
 
     // efeitos sonoros
     
-
-     if (vel >= 1) {
+    themeMusic();
+    function themeMusic() {
         var theme = document.getElementById("themeMusic");
         theme.play();
     }
 
-    function up() {
-        let audiokey = document.getElementById("keyUp");
-        audiokey.currentTime = 0.62;
-        audiokey.play();
+    function upSound() {
+        let audio = document.getElementById("keyUp");
+        audio.currentTime = 0.62;
+        audio.play();
     }
 
     function colisao() {
         if (ctrlColisao == 0) {
             let audio = document.getElementById("gameOver");
+            audio.currentTime = .24;
             audio.play();  
             ctrlColisao = 1;
         }
@@ -404,6 +425,7 @@ window.onload = function() {
 
     function bip () {
         let audio = document.getElementById("bip");
+        audio.currentTime = 0.18
         audio.play()
     }
 }
