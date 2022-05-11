@@ -244,7 +244,6 @@ window.onload = function() {
         if (pPersonagemY + (aImgPersonagem -10)>= pCactoY1 && pCactoX2 
             + 15 <= pPersonagemX +lImgPersonagem && pCactoX2 > 35) {
             vel = 0;
-            console.log("pegou")
             //colisao();
         } 
 
